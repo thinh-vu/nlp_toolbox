@@ -1,5 +1,5 @@
 import shutil
-# import os
+import os
 # import subprocess
 import requests
 from trafilatura import fetch_url, extract
