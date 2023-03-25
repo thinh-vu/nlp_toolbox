@@ -17,7 +17,9 @@ dependencies = ["poetry-core",
                 "nltk",
                 "wordcloud",
                 "spacy",
-                "ebooklib"
+                "ebooklib",
+                "ur_gadget",
+                "pytesseract"
                 ]
 [tool.poetry.dependencies]
 python = "^3.7"
