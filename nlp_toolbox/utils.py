@@ -1,9 +1,20 @@
 import shutil
-import os
-import subprocess
+# import os
+# import subprocess
 import requests
 from trafilatura import fetch_url, extract
 import yaml
+
+def lmt_detect():
+    """Detect the running OS and return file path delimiter"""
+    if os.name == 'nt':
+        lmt = '\\'
+    else:
+        lmt = '/'
+    return lmt
+
+ROOT_DIR = os.path.abspath(os.curdir)
+LMT = lmt_detect()
 
 # DATA LOADING
 ## Read text file
@@ -47,12 +58,11 @@ def memory_cleaner():
     torch.cuda.empty_cache()
 
 ## Get Google font
-def get_google_font(font_family):
+def get_google_font(font_family, delimiter=LMT):
     """Download & extract a Google font to local folder"""
-    lmt = lmt_detect()
     font_url = 'https://fonts.google.com/download?family={}'.format(font_family)
     response = requests.get(font_url)
-    file_name = ROOT_DIR + lmt + '{}.zip'.format(font_family)
+    file_name = ROOT_DIR + delimiter + '{}.zip'.format(font_family)
     with open(file_name, 'wb') as f:
         f.write(response.content)
-    shutil.unpack_archive(file_name, lmt.join([ROOT_DIR, 'font', font_family]))
+    shutil.unpack_archive(file_name, delimiter.join([ROOT_DIR, 'font', font_family]))

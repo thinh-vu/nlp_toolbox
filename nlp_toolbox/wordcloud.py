@@ -13,9 +13,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 #%matplotlib inline
 
-def wordcloud_gen (text, font_path='', limit=100, color_map='magma', bg_color='white', font_size=300, fig_size= (20,20), width=1024, height=800, interpolation='bilinear'):
-    if font_path == '':
-        custom_font = ''
+def wordcloud_gen (text, font_path=None, limit=100, color_map='magma', bg_color='white', font_size=300, fig_size= (20,20), width=1024, height=800, interpolation='bilinear'):
+    if font_path is None:
+        custom_font = None
     else:
         custom_font = font_path
 
@@ -38,5 +38,3 @@ def word_tokenize_stats(text):
     c = Counter(word_tokenize(text))
     df = pd.DataFrame.from_records(list(dict(c).items()), columns=['word','count']).sort_values(by='count', ascending=False).reset_index(drop=True)
     return df
-
-# TEXT SUMMARY
