@@ -18,7 +18,8 @@ def read_epub_text(epub_path, filter=''):
 def get_chapter(epub_path):
     book = epub.read_epub(epub_path)
     chapters = list(book.get_items_of_type(ebooklib.ITEM_DOCUMENT))
-    return [c.get_name() for c in chapters]
+#     return [c.get_name() for c in chapters]
+    return chapters
 
 def chapter_to_str(chapter):
     soup = BeautifulSoup(chapter.get_body_content(), 'html.parser')
