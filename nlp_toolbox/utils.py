@@ -24,6 +24,21 @@ def read_txt(path_to_file):
         content = f.read()
     return content
 
+## Save text file
+def save_txt(file_name, text):
+    """
+    Save text to a file.
+
+    Args:
+        file_name (str): The name of the file to save.
+        text (str): The text to write to the file.
+
+    Returns:
+        None
+    """
+    with open(file_name, 'w') as f:
+        f.write(text)
+
 # API Request
 def api_request(url, payload={}, method='GET'):
     """Request any API endpoints with a default User-Agent"""
@@ -36,11 +51,11 @@ def api_request(url, payload={}, method='GET'):
     response = requests.request(f"{method}", url, headers=headers, data=payload)
     return response.json()
 
-## Convert Web to text
-def web_to_text(url):
-    downloaded = fetch_url(url)
-    result = extract(downloaded)
-    return result
+# ## Convert Web to text
+# def web_to_text(url):
+#     downloaded = fetch_url(url)
+#     result = extract(downloaded)
+#     return result
 
 # TRANSLATION
 from deep_translator import GoogleTranslator
