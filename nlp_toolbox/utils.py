@@ -25,7 +25,7 @@ def read_txt(path_to_file):
     return content
 
 ## Save text file
-def save_txt(file_name, text):
+def save_txt(file_path, text):
     """
     Save text to a file.
 
@@ -36,7 +36,9 @@ def save_txt(file_name, text):
     Returns:
         None
     """
-    with open(file_name, 'w') as f:
+    if not os.path.exists(file_path):
+    os.makedirs(file_path)
+    with open(file_path, 'w') as f:
         f.write(text)
 
 # API Request
