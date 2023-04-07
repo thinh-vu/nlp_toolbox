@@ -30,14 +30,15 @@ def save_txt(file_path, text):
     Save text to a file.
 
     Args:
-        file_name (str): The name of the file to save.
-        text (str): The text to write to the file.
+      file_name (str): The name of the file to save.
+      text (str): The text to write to the file.
 
     Returns:
-        None
+      None
     """
-    if not os.path.exists(file_path):
-        os.makedirs(file_path)
+    dir_path = os.path.split(path)[0]
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
     with open(file_path, 'w') as f:
         f.write(text)
 
