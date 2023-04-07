@@ -1,6 +1,6 @@
 from newspaper import Article
 
-def web_to_text(url: str) -> str:
+def web_to_txt(url: str) -> str:
     """
     Downloads and parses the text of a webpage from a given URL.
 
